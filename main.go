@@ -2,7 +2,9 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/yujen77300/curd-practice/database"
 	"github.com/yujen77300/curd-practice/routes"
+	"github.com/yujen77300/curd-practice/utils"
 )
 
 func main() {
@@ -11,6 +13,9 @@ func main() {
 
 	// register the routes
 	routes.SetupRoutes(app)
+
+	// connect to the database
+	database.InitDatabase(utils.GetValue("DB_NAME"))
 
 	app.Listen(port)
 }
